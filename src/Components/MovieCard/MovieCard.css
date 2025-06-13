@@ -1,0 +1,37 @@
+.movie-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #000000;
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.movie-icon:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.movie-icon img {
+  width: 200px;
+  height: 350px;
+  margin-bottom: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.movie-icon img:hover {
+  transform: scale(1.05);
+}
+
+.movie-icon h2 {
+  margin: 0;
+  margin-top: 0.25rem;
+  font-size: 1rem;
+  text-transform: capitalize;
+  transition: color 0.2s ease;
+}
+

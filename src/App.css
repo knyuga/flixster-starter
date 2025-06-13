@@ -2,14 +2,14 @@
   text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
+#App-header {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  color: white;
+  color: rgb(0, 0, 0);
   padding: 20px;
+  font-size: 150px;
 }
 
 @media (max-width: 600px) {

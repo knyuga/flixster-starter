@@ -1,0 +1,21 @@
+/* Container for all the cards */
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 75px;
+  background-color: #fafafa;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Loading / empty state */
+.movie-list:empty::before {
+  content: "Loading Movies...";
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #666;
+  font-size: 1.1rem;
+  padding: 2rem 0;
+}

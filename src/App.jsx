@@ -3,6 +3,7 @@ import MovieList from "./Components/MovieList/MovieList";
 
 
 
+
 const App = () => {
   return (
     <>

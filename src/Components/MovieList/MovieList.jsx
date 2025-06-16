@@ -14,17 +14,22 @@ const MovieList = () => {
         try {
             const API_URL = import.meta.env.VITE_NOWPLAYING_URL;
             const API_KEY = import.meta.env.VITE_API_KEY;
+            const SEARCH_URL = import.meta.env.VITE_SEARCH_URL;
+
             // console.log(API_KEY);
             // console.log(API_URL);
 
             let data; // variable to hold the data we get from the API
+            // const response = await axios.get(`${API_URL}?api_key=${API_KEY}&page=${page}`);
+            // data = response.data;
+
             if (searchQuery === "") {
                 // if the search bar is empty, fetch the "now playing" movies
                 const response = await axios.get(`${API_URL}?api_key=${API_KEY}&page=${page}`);
                 data = response.data;
             } else {
                 // if the user typed something, fetch search results
-                const response = await axios.get(`${API_URL}?api_key=${API_KEY}&page=${page}&query=${searchQuery}`);
+                const response = await axios.get(`${SEARCH_URL}?api_key=${API_KEY}&page=${page}&query=${searchQuery}`);
                 data = response.data;
             }
 
@@ -36,7 +41,7 @@ const MovieList = () => {
             } else { // if page is not 1, we want to append the new movies to the existing movies array
                 setMovies((prevMovies) => [...prevMovies, ...newMovies]); // syntax description: use the spread operator to take all the movies we already have, and add the new ones to the end, and then update the state
             }
-            console.log(data.results);
+            // console.log(data.results);
 
             if (page >= data.total_pages) { // check if the current page is greater than or equal to the total pages
                 setHasMore(false);
@@ -68,22 +73,31 @@ const MovieList = () => {
     const handleSearch = async () => { 
         // when the user clicks the search button, we want to fetch movies based on the search query.
         console.log("Search for: ", searchQuery); // log the search query to the console
+
         try {
-            const API_URL = import.meta.env.VITE_SEARCH_URL;
+            const SEARCH_URL = import.meta.env.VITE_SEARCH_URL;
             const API_KEY = import.meta.env.VITE_API_KEY;
+            setPage(1); // reset page to 1 when searching, so we start from the first page of results
 
             const { data } = await axios.get(
-                `${API_URL}?api_key=${API_KEY}&query=${searchQuery}` // use the search query to get the movies
+                `${SEARCH_URL}?api_key=${API_KEY}&page=${page}&query=${searchQuery}` // use the search query to get the movies
             );
 
             setMovies(data.results); // update movies with the search results
-            setPage(1); // reset page to 1 for new search results
             setHasMore(data.results.length > 0); // check if there are more results to load
+
+            // if(page === 1) { // if page is 1, we want to reset the movies array
+            //     setMovies(newMovies); // set movies to the new movies
+            // } else { // if page is not 1, we want to append the new movies to the existing movies array
+            //     setMovies((prevMovies) => [...prevMovies, ...newMovies]); // syntax description: use the spread operator to take all the movies we already have, and add the new ones to the end, and then update the state
+            // }
 
         } catch (err) {
             console.error("Error searching movies: ", err);
         }
     }
+
+    // add search to sorting functionality
 
     const handleClear = async() => {
         console.log("Clear search");

@@ -50,7 +50,7 @@ const MovieList = () => {
         } catch (err) {
             console.error("Error fetching list: ", err);
         }
-    }, [page, searchQuery]); // dependency bracket holds page, so it will run the fetchList function whenever the page changes
+    }, [page]); // dependency bracket holds page, so it will run the fetchList function whenever the page changes
 
     // step one - fetch list on mount
     useEffect(() => {
@@ -67,6 +67,7 @@ const MovieList = () => {
     const handleSearchChange = (event) => { // event handler function : user types something in the search bar, a change event is triggered
         // Updating the state: Inside the event handler function, we access the new value the user has typed using the event object. We then update 
         // our component's state variable (searchQuery) with this new value. This ensures the state reflects the latest input from the user.
+
         setSearchQuery(event.target.value); // updates search query state variable every time the user types in the search bar
     };
 
@@ -101,8 +102,30 @@ const MovieList = () => {
 
     const handleClear = async() => {
         console.log("Clear search");
+
+        try {
+            const API_URL = import.meta.env.VITE_NOWPLAYING_URL;
+            const API_KEY = import.meta.env.VITE_API_KEY;
+            setPage(1); // reset page to 1 when searching, so we start from the first page of results
+
+            const { data } = await axios.get(
+                `${API_URL}?api_key=${API_KEY}&page=${page}&query=${searchQuery}` // use the search query to get the movies
+            );
+
+            setMovies(data.results); // update movies with the search results
+            setHasMore(data.results.length > 0); // check if there are more results to load
+
+            // if(page === 1) { // if page is 1, we want to reset the movies array
+            //     setMovies(newMovies); // set movies to the new movies
+            // } else { // if page is not 1, we want to append the new movies to the existing movies array
+            //     setMovies((prevMovies) => [...prevMovies, ...newMovies]); // syntax description: use the spread operator to take all the movies we already have, and add the new ones to the end, and then update the state
+            // }
+
+        } catch (err) {
+            console.error("Error clearing movies: ", err);
+        }
+
         setSearchQuery(""); // clear the search query
-        setPage(1); // reset page to 1
     }
 
 

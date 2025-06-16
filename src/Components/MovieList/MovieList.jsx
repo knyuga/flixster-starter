@@ -1,6 +1,7 @@
 import {useState, useEffect, useCallback} from "react"; // use state is to store values, use effect is to runs effects like fetching data from an API
 import axios from "axios";
 import MovieCard from "../MovieCard/MovieCard";
+import MovieModal from "../MovieModal/MovieModal"; 
 import "./MovieList.css";
 
 const MovieList = () => {
@@ -8,7 +9,10 @@ const MovieList = () => {
     const [page, setPage] = useState(1); // pagination state variable to match TMDB
     const [hasMore, setHasMore] = useState(true); // state variable to check if there are more movies to load
     const [searchQuery, setSearchQuery] = useState(""); // state variable to hold search query and updates as the user types in the search bar
+    const [selectedMovie, setSelectedMovie] = useState(null); // holds details of the movie that is clicked on, initially set to null
+    const [showModal, setShowModal] = useState(false); // state variable to control the visibility of the modal, initially set to false (modal is hidden)
 
+    console.log('selected movie', selectedMovie)
 
     const fetchList = useCallback(async () => { // waiting for axios using async, useCallback to memoize(store) the function so it doesn't change on every render (only when dependencies change)
         try {
@@ -57,6 +61,18 @@ const MovieList = () => {
         fetchList();
     }, [fetchList] ); 
 
+    const handleCardClick = (movie) => {
+        setShowModal(true);
+        setSelectedMovie(movie); // setting it to null triggers the loading state (from devarsh code)
+    };
+
+    //3 close modal
+    const handleClose = () => {
+        // reset the modal state
+        setShowModal(false);
+        setSelectedMovie(null);
+    };
+
     const handleLoadMore = () => {
         console.log("Loading more movies...");
         if (hasMore) {
@@ -97,8 +113,6 @@ const MovieList = () => {
             console.error("Error searching movies: ", err);
         }
     }
-
-    // add search to sorting functionality
 
     const handleClear = async() => {
         console.log("Clear search");
@@ -143,9 +157,8 @@ const MovieList = () => {
                     return (
                         <MovieCard
                             key={m.id}
-                            title={m.title}
-                            vote_average={m.vote_average}
-                            poster_path={m.poster_path}
+                            movie={m}
+                            handleCardClick={handleCardClick}
                         />
                     );
                 })}
@@ -159,8 +172,12 @@ const MovieList = () => {
                     <button className="load-button" disabled>No More Movies</button>
                 </div>
                 )
-        }
-            
+            }
+            <MovieModal
+                show={showModal}
+                onClose={handleClose}
+                movie={selectedMovie}
+            />
 
         </>
     );

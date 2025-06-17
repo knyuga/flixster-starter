@@ -1,37 +1,49 @@
-.App {
-  text-align: center;
+html, body, #root {
+  background-color: #000;
+  height: 0;
+  
 }
 
 #App-header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
-  color: rgb(0, 0, 0);
-  padding: 20px;
+  justify-content: center;
+  color: rgb(255, 0, 0);
+  padding: 30px;
   font-size: 150px;
+  font-family: "Hoefler Text","Baskerville Old Face",Garamond,"Times New Roman",serif; 
+  background-color: black;
+  box-sizing: border-box;
+  text-shadow: 2px 2px 4px #dd0909, -2px -2px 4px #ffffff;
 }
 
-@media (max-width: 600px) {
-  .movie-card {
-    width: 100%;
-  }
+.typing-effect {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid rgb(176, 9, 9); /* Cursor effect */
+  width: 0ch; /* Start with no width */
+  animation: typing 3s steps(8, end) forwards, blink-caret 0.75s step-end infinite;
+}
 
-  .search-bar {
-    flex-direction: column;
-    gap: 10px;
-  }
+@keyframes typing {
+  from { width: 0ch }
+  to { width: 8.5ch }
+}
 
-  .search-bar form {
-    flex-direction: column;
-  }
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: red; }
 }
 
 #App-footer {
-  /* position: fixed; */
   bottom: 0;
   width: 100%;
-  background-color: #f1f1f1;
+  background-color: #000000;
   text-align: center;
   padding: 30px;
+  font-family: "Hoefler Text","Baskerville Old Face",Garamond,"Times New Roman",serif; 
+  color: red;
+  font-size: 30px;
 }

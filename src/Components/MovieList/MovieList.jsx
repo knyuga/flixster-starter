@@ -166,53 +166,55 @@ const MovieList = () => {
 
     return (
         <>
-            <div className="search-container">
-                {/* state variable (searchQuery) holds the curr text the user has typed in search bar, gets linked to the value attribute of the <input> element */}
-                <input type="text" value={searchQuery} onChange={handleSearchChange} placeholder="Search" /> 
-                <button onClick={handleSearch}>Search</button>
-                <button onClick={handleClear}>Clear</button>
-            </div>
+            <div className="movie-list-body">
+                <div className="search-and-sort-container">
+                    <div className="search-container">
+                        {/* state variable (searchQuery) holds the curr text the user has typed in search bar, gets linked to the value attribute of the <input> element */}
+                        <input type="text" value={searchQuery} onChange={handleSearchChange} placeholder="Search" /> 
+                        <button onClick={handleSearch}>Search</button>
+                        <button onClick={handleClear}>Clear</button>
+                    </div>
 
-            <div>
-                <label htmlFor="sort-options">Sort Options</label>
-                <select id="sort-options" value={selectedSort} onChange={handleSortChange}>
-                    <option value="now-playing">Now Playing</option>
-                    <option value="alphabetic-order">Alphabetic (A-Z)</option>
-                    <option value="rating-descending"> Ratings (Highest to Lowest)</option>
-                    <option value="release-date-newest">Release Date (Newest)</option>
-                    <option value="popular">Popular</option>
-                    <option value="top-rated">Top Rated</option>
-                    <option value="upcoming">Upcoming</option>
-                </select>
-            </div>
-
-            <div className="movie-list"> 
-                {movies.map((m) => {    
-                    return (
-                        <MovieCard
-                            key={m.id}
-                            movie={m}
-                            handleCardClick={handleCardClick}
-                        />
-                    );
-                })}
-            </div>
-            {hasMore ? (
-                <div className="load-button-container">
-                    <button className="load-button" onClick={handleLoadMore}>Load More</button>
+                    <div className = "sort-container">
+                        <label htmlFor="sort-options">Sort Options:</label>
+                        <select id="sort-options" value={selectedSort} onChange={handleSortChange}>
+                            <option value="now-playing">Now Playing</option>
+                            <option value="alphabetic-order">Alphabetic (A-Z)</option>
+                            <option value="rating-descending"> Ratings (Highest to Lowest)</option>
+                            <option value="release-date-newest">Release Date (Newest)</option>
+                            <option value="popular">Popular</option>
+                            <option value="top-rated">Top Rated</option>
+                            <option value="upcoming">Upcoming</option>
+                        </select>
+                    </div>
                 </div>
-                ) : (
-                <div className="load-button-container">
-                    <button className="load-button" disabled>No More Movies</button>
+                <div className="movie-list"> 
+                    {movies.map((m) => {    
+                        return (
+                            <MovieCard
+                                key={m.id}
+                                movie={m}
+                                handleCardClick={handleCardClick}
+                            />
+                        );
+                    })}
                 </div>
-                )
-            }
-            <MovieModal
-                show={showModal}
-                movie={selectedMovie}
-                handleClose={handleClose}
-            />
-
+                {hasMore ? (
+                    <div className="load-button-container">
+                        <button className="load-button" onClick={handleLoadMore}>Load More</button>
+                    </div>
+                    ) : (
+                    <div className="load-button-container">
+                        <button className="load-button" disabled>No More Movies</button>
+                    </div>
+                    )
+                }
+                <MovieModal
+                    show={showModal}
+                    movie={selectedMovie}
+                    handleClose={handleClose}
+                />
+            </div>
         </>
     );
 };

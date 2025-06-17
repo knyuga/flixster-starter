@@ -46,7 +46,7 @@ const MovieModal = ({show, movie, handleClose}) => {
     }
 
     function getTrailer(){
-        
+        return;
     }
 
     

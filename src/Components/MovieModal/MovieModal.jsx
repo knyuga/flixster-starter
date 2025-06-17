@@ -56,9 +56,11 @@ const MovieModal = ({show, movie, handleClose}) => {
                 <div className="modal-header">
                     <button className="close-button" onClick={handleClose}>X</button>
                 </div>
+                <div className="modal-title">
+                    <h2>{title}</h2>
+                </div>
                 <div className="modal-body">
                     <div className="details">
-                        <h2>{title}</h2>
                         <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title} />
                         <h3>Release Date: {release_date}</h3>
                         <h3>Overview: {overview}</h3>

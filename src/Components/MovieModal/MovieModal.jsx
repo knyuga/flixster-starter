@@ -10,7 +10,7 @@ const MovieModal = ({show, movie, handleClose}) => {
 
     const API_KEY = import.meta.env.VITE_API_KEY;
     const GENRE_API_URL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`;
-    const { title, poster_path, release_date, overview, genre_ids } = movie;
+    const { title, poster_path, release_date, overview, genre_ids, backdrop_path } = movie;
     const [genreDict, setGenreDict] = useState({});
 
     console.log('MOVIE GENRES ID', genre_ids);
@@ -61,7 +61,7 @@ const MovieModal = ({show, movie, handleClose}) => {
                 </div>
                 <div className="modal-body">
                     <div className="details">
-                        <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title} />
+                        <img src={`https://image.tmdb.org/t/p/w500${backdrop_path}`} alt={title} />
                         <h3>Release Date: {release_date}</h3>
                         <h3>Overview: {overview}</h3>
                         <h3>Genre: {getGenres()}</h3>

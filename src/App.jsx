@@ -9,6 +9,7 @@ const App = () => {
     <>
     <header id="App-header">FLIXSTER</header>
     <MovieList />
+    <footer id="App-footer">Kenna Nyuga, 2025</footer>
     </>
   );
 };

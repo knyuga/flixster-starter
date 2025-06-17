@@ -8,7 +8,7 @@ const App = () => {
       <span className ="typing-effect">FLIXSTER🎬</span>
     </header>
     <MovieList />
-    <footer id="App-footer">Kenna Nyuga, 2025</footer>
+    <footer id="App-footer">2025 Flixster Inc, Kenna Nyuga</footer>
     </>
   );
 };

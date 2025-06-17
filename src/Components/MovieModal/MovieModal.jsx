@@ -10,7 +10,7 @@ const MovieModal = ({show, movie, handleClose}) => {
 
     const API_KEY = import.meta.env.VITE_API_KEY;
     const GENRE_API_URL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`;
-    const { title, poster_path, release_date, overview, genre_ids, backdrop_path } = movie;
+    const { title, release_date, overview, genre_ids, backdrop_path } = movie;
     const [genreDict, setGenreDict] = useState({});
 
     console.log('MOVIE GENRES ID', genre_ids);

@@ -62,7 +62,7 @@ Deployed Application (optional): https://knyuga-flixster-starter.onrender.com/
     - [x] Search bar
     - [x] Movie grid
     - [x] Footer section
-    - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: To ease the grading process, please use the [color contrast checker](https://webaim.org/resources/contrastchecker/) to demonstrate to the grading team that text and background colors on your website have appropriate contrast. The Contrast Ratio should be above 4.5:1 and should have a green box surrounding it. 
+    - [x] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: To ease the grading process, please use the [color contrast checker](https://webaim.org/resources/contrastchecker/) to demonstrate to the grading team that text and background colors on your website have appropriate contrast. The Contrast Ratio should be above 4.5:1 and should have a green box surrounding it. 
 
 #### STRETCH FEATURES
 
@@ -104,8 +104,7 @@ Deployed Application (optional): https://knyuga-flixster-starter.onrender.com/
 
 
 `ADD_EMBEDDED_CODE_HERE`
-https://www.loom.com/share/f222756bebde40cd8de37e8e4d3471d0?sid=c501ad67-5e65-4723-ada1-8eda4a268f6c
-
+https://www.loom.com/share/52d2b9b2452d46c383935a0ba2573f02?sid=b5104e5c-d77b-46ba-b3de-927b8b3b1515
 
 ### Reflection
 

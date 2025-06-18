@@ -10,11 +10,11 @@
   align-items: center;
   justify-content: space-between;
   
-  gap: 20px;
+  gap: 10px;
   padding: 75px;
   background-color: #000000;
   background-image: url("https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3YTM0OWlyeHVsZDFtZ2E0eGFnaXc3bGUyNGFydG9vZmN5ZjZjeDdpbCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/C5YQJNUpRjcsgNdqii/giphy.gif");
-  max-width: 1500px;
+  max-width: 1690px;
   margin: 0 auto;
 }
 

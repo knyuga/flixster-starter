@@ -4,6 +4,16 @@ html, body, #root {
   
 }
 
+@media (max-width: 600px) {
+  #App-header {
+    font-size: 48px;
+    padding: 16px;
+  }
+  .typing-effect {
+    font-size: 48px;
+  }
+}
+
 #App-header {
   display: flex;
   flex-direction: row;

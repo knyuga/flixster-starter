@@ -33,3 +33,17 @@
   height: 320px;
   border-radius: 8px 8px 0 0; /* Rounded corners for the top */
 }
+
+
+@media (max-width: 600px) {
+  .movie-icon {
+    width: 90vw;
+    height: 350px;
+    margin: 0 auto; /* Center horizontally */
+  }
+
+  .movie-icon img {
+    width: 90vw;
+    height: 200px;
+  }
+}
